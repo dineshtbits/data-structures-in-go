@@ -11,20 +11,21 @@ import (
 )
 
 func main() {
-	linkedlistFunctions()
-	queueFunctions()
-	stackFunctions()
-	heapFunctions()
+	// linkedlistFunctions()
+	// queueFunctions()
+	// stackFunctions()
+	// heapFunctions()
 	treeFunctions()
 }
 
 func treeFunctions() {
 	b := &tree.BinaryTree{}
 	b.Insert(5)
-	b.Insert(10)
+	b.Insert(20)
 	b.Insert(12)
 	b.Insert(14)
 	b.Insert(15)
+	fmt.Printf("b.Max() %v\n", b.Max())
 }
 
 func stackFunctions() {
