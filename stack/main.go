@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package stack
 
 type Stack struct {
 	items []int
@@ -17,16 +15,6 @@ func (s *Stack) Pop() int {
 	return removed
 }
 
-func main() {
-	s := &Stack{}
-	s.Push(10)
-	s.Push(9)
-	s.Push(8)
-	s.Push(7)
-	s.Push(6)
-	fmt.Printf("stack is %v\n", s)
-	fmt.Printf("removed %v - %v\n", s.Pop(), s.items)
-	fmt.Printf("removed %v - %v\n", s.Pop(), s.items)
-	fmt.Printf("removed %v - %v\n", s.Pop(), s.items)
-	fmt.Printf("removed %v - %v\n", s.Pop(), s.items)
+func (s *Stack) Show() []int {
+	return s.items
 }

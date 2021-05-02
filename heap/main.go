@@ -1,8 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
+package heap
 
 type Heap struct {
 	items []int
@@ -63,20 +59,4 @@ func (h *Heap) swap(left, right int) {
 
 func parent(index int) int {
 	return (index - 1) / 2
-}
-
-func main() {
-	h := &Heap{}
-	fmt.Printf("initial value: %v \n", h)
-	arr := []int{5, 7, 2, 9, 3, 6, 1, 4, 10}
-	for _, v := range arr {
-		h.Insert(v)
-	}
-	fmt.Printf("heapified value: %v \n", h)
-	h.Extract()
-	fmt.Printf("Extracted value: %v \n", h)
-	h.Extract()
-	fmt.Printf("Extracted value: %v \n", h)
-	h.Extract()
-	fmt.Printf("Extracted value: %v \n", h)
 }

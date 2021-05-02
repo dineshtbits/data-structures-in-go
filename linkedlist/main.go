@@ -1,4 +1,4 @@
-package main
+package linkedlist
 
 import (
 	"fmt"
@@ -13,18 +13,16 @@ type List struct {
 	head *Node
 }
 
-func (L *List) insertAtBegining(s string) {
+func (L *List) InsertAtBegining(s string) {
 	n := &Node{value: s}
 
 	if L.head != nil {
 		n.next = L.head
-		L.head = n
-	} else {
-		L.head = n
 	}
+	L.head = n
 }
 
-func (L *List) deleteByValue(s string) {
+func (L *List) DeleteByValue(s string) {
 	if L.head == nil {
 		fmt.Println("List is empty - nothing to delete")
 		return
@@ -48,7 +46,7 @@ func (L *List) deleteByValue(s string) {
 	previousNode.next = previousNode.next.next
 }
 
-func (L *List) show() {
+func (L *List) Show() {
 	currentNode := L.head
 	if currentNode == nil {
 		fmt.Println("List is empty")
@@ -58,15 +56,4 @@ func (L *List) show() {
 			currentNode = currentNode.next
 		}
 	}
-}
-
-func main() {
-	l := List{}
-	l.insertAtBegining("dinesh")
-	l.insertAtBegining("Tummlapalli")
-	l.insertAtBegining("John")
-	l.insertAtBegining("Doe")
-	l.show()
-	l.deleteByValue("David")
-	l.show()
 }
