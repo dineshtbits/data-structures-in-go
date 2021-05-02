@@ -2,10 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/dineshtbits/data-structures-in-go/stack"
+
 	"github.com/dineshtbits/data-structures-in-go/heap"
 	"github.com/dineshtbits/data-structures-in-go/linkedlist"
 	"github.com/dineshtbits/data-structures-in-go/queue"
+	"github.com/dineshtbits/data-structures-in-go/stack"
+	"github.com/dineshtbits/data-structures-in-go/tree"
 )
 
 func main() {
@@ -13,6 +15,16 @@ func main() {
 	queueFunctions()
 	stackFunctions()
 	heapFunctions()
+	treeFunctions()
+}
+
+func treeFunctions() {
+	b := &tree.BinaryTree{}
+	b.Insert(5)
+	b.Insert(10)
+	b.Insert(12)
+	b.Insert(14)
+	b.Insert(15)
 }
 
 func stackFunctions() {
