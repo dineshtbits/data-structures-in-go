@@ -26,6 +26,11 @@ func treeFunctions() {
 	b.Insert(14)
 	b.Insert(15)
 	fmt.Printf("b.Max() %v\n", b.Max())
+	fmt.Printf("b.MaxUsingLevelOrder() %v\n", b.MaxUsingLevelOrder())
+	fmt.Printf("b.Find(20) %v\n", b.Find(20))
+	fmt.Printf("b.FindUsingLevelOrder(20) %v\n", b.FindUsingLevelOrder(20))
+	fmt.Printf("b.Height() %v\n", b.Height())
+	fmt.Printf("b.HeightUsingLevelOrder() %v\n", b.HeightUsingLevelOrder())
 }
 
 func stackFunctions() {
