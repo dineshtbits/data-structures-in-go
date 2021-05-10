@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/dineshtbits/data-structures-in-go/bst"
 	"github.com/dineshtbits/data-structures-in-go/heap"
 	"github.com/dineshtbits/data-structures-in-go/linkedlist"
 	"github.com/dineshtbits/data-structures-in-go/queue"
@@ -15,7 +16,8 @@ func main() {
 	// queueFunctions()
 	// stackFunctions()
 	// heapFunctions()
-	treeFunctions()
+	// treeFunctions()
+	bstFunctions()
 }
 
 func treeFunctions() {
@@ -31,6 +33,24 @@ func treeFunctions() {
 	fmt.Printf("b.FindUsingLevelOrder(20) %v\n", b.FindUsingLevelOrder(20))
 	fmt.Printf("b.Height() %v\n", b.Height())
 	fmt.Printf("b.HeightUsingLevelOrder() %v\n", b.HeightUsingLevelOrder())
+}
+
+func bstFunctions() {
+	b := &bst.BinarySearchTreeNode{}
+	b.Insert(6)
+	b.Insert(5)
+	b.Insert(7)
+	b.Insert(4)
+	b.Insert(3)
+	b.Insert(1)
+	b.Insert(2)
+	b.Insert(8)
+	b.Insert(9)
+	b.Insert(10)
+	b.Insert(11)
+	b.ShowPreOrder()
+	fmt.Println()
+	b.ShowInOrder()
 }
 
 func stackFunctions() {
