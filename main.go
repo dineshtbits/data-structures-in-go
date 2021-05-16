@@ -57,12 +57,16 @@ func bstFunctions() {
 	b.ShowInOrder()
 	fmt.Println()
 	fmt.Printf("Max: %v\n", b.Max())
-	b.Delete(6)
-	b.ShowPreOrder()
+	// b.Delete(6)
+	// b.ShowPreOrder()
+	// fmt.Println()
+	// b.ShowInOrder()
+	// fmt.Println()
+	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+	fmt.Printf("Building BST using sorted array: %v\n", arr)
+	node := bst.Build(arr)
+	node.ShowInOrder()
 	fmt.Println()
-	b.ShowInOrder()
-	fmt.Println()
-
 }
 
 func stackFunctions() {

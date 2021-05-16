@@ -12,6 +12,20 @@ type BinarySearchTreeNode struct {
 	right *BinarySearchTreeNode
 }
 
+func Build(arr []int) *BinarySearchTreeNode {
+	if len(arr) == 0 {
+		return nil
+	} else if len(arr) == 1 {
+		return &BinarySearchTreeNode{data: arr[0]}
+	} else {
+		mid := len(arr) / 2
+		n := &BinarySearchTreeNode{data: arr[mid]}
+		n.left = Build(arr[:mid])
+		n.right = Build(arr[mid+1:])
+		return n
+	}
+}
+
 func (n *BinarySearchTreeNode) Insert(data int) *BinarySearchTreeNode {
 	if n == nil {
 		n = &BinarySearchTreeNode{data: data}
