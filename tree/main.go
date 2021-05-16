@@ -17,6 +17,42 @@ type BinaryTree struct {
 	root *BinaryTreeNode
 }
 
+// Inorder: 4 2 5 1 6 3
+// Preorder: 1 2 4 5 3 6
+func BuildBinaryTreeNode(preOrderSequence []int, inOrderSequence []int) *BinaryTreeNode {
+
+	if len(preOrderSequence) == 0 {
+		return nil
+	}
+
+	node := &BinaryTreeNode{data: preOrderSequence[0]}
+
+	if len(preOrderSequence) == 1 {
+		return node
+	}
+
+	indexOfRoot := getIndexOf(inOrderSequence, node.data.(int))
+	if indexOfRoot == -1 {
+		return nil
+	}
+	fmt.Printf("preOrderSequence[1:indexOfRoot+1]: %v\n", preOrderSequence[1:indexOfRoot+1])
+	node.left = BuildBinaryTreeNode(preOrderSequence[1:indexOfRoot+1], inOrderSequence[:indexOfRoot])
+	node.right = BuildBinaryTreeNode(preOrderSequence[indexOfRoot+1:], inOrderSequence[indexOfRoot+1:])
+
+	return node
+}
+
+func getIndexOf(arr []int, s int) int {
+	index := -1
+	for i, element := range arr {
+		if element == s {
+			index = i
+			break
+		}
+	}
+	return index
+}
+
 func (b *BinaryTree) Height() int {
 	if b.root == nil {
 		panic("tree is empty")

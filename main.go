@@ -12,11 +12,11 @@ import (
 )
 
 func main() {
-	// linkedlistFunctions()
-	// queueFunctions()
-	// stackFunctions()
-	// heapFunctions()
-	// treeFunctions()
+	linkedlistFunctions()
+	queueFunctions()
+	stackFunctions()
+	heapFunctions()
+	treeFunctions()
 	bstFunctions()
 }
 
@@ -33,6 +33,10 @@ func treeFunctions() {
 	fmt.Printf("b.FindUsingLevelOrder(20) %v\n", b.FindUsingLevelOrder(20))
 	fmt.Printf("b.Height() %v\n", b.Height())
 	fmt.Printf("b.HeightUsingLevelOrder() %v\n", b.HeightUsingLevelOrder())
+	inOrder := []int{4, 2, 5, 1, 6, 3}
+	preOrder := []int{1, 2, 4, 5, 3, 6}
+	t := tree.BuildBinaryTreeNode(preOrder, inOrder)
+	fmt.Printf("Building a tree using inOrder: %v, preorder: %v, result: %v", inOrder, preOrder, t)
 }
 
 func bstFunctions() {
