@@ -25,6 +25,41 @@ func (n *BinarySearchTreeNode) Insert(data int) *BinarySearchTreeNode {
 	return n
 }
 
+func (n *BinarySearchTreeNode) Delete(data int) *BinarySearchTreeNode {
+	if n == nil {
+		return nil
+	} else if data > n.data.(int) {
+		return n.right.Delete(data)
+	} else if data < n.data.(int) {
+		return n.right.Delete(data)
+	} else {
+		// equal
+
+		if n.left != nil && n.right != nil {
+			temp := n.left.Max()
+			n.data = temp.data
+			n.left = n.left.Delete(n.data.(int))
+		}
+
+		if n.left == nil {
+			n = n.right
+		}
+
+		if n.right == nil {
+			n = n.left
+		}
+		return n
+	}
+}
+
+func (n *BinarySearchTreeNode) Max() *BinarySearchTreeNode {
+	if n == nil || n.right == nil {
+		return n
+	} else {
+		return n.right.Max()
+	}
+}
+
 func (n *BinarySearchTreeNode) ShowPreOrder() {
 	fmt.Printf("Showing Preorder ")
 	s := stack.Stack{}

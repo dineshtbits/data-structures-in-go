@@ -12,11 +12,11 @@ import (
 )
 
 func main() {
-	linkedlistFunctions()
-	queueFunctions()
-	stackFunctions()
-	heapFunctions()
-	treeFunctions()
+	// linkedlistFunctions()
+	// queueFunctions()
+	// stackFunctions()
+	// heapFunctions()
+	// treeFunctions()
 	bstFunctions()
 }
 
@@ -55,6 +55,14 @@ func bstFunctions() {
 	b.ShowPreOrder()
 	fmt.Println()
 	b.ShowInOrder()
+	fmt.Println()
+	fmt.Printf("Max: %v\n", b.Max())
+	b.Delete(6)
+	b.ShowPreOrder()
+	fmt.Println()
+	b.ShowInOrder()
+	fmt.Println()
+
 }
 
 func stackFunctions() {
