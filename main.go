@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/dineshtbits/data-structures-in-go/bst"
+	"github.com/dineshtbits/data-structures-in-go/graph"
 	"github.com/dineshtbits/data-structures-in-go/heap"
 	"github.com/dineshtbits/data-structures-in-go/linkedlist"
 	"github.com/dineshtbits/data-structures-in-go/queue"
@@ -17,7 +18,22 @@ func main() {
 	// stackFunctions()
 	// heapFunctions()
 	// treeFunctions()
-	bstFunctions()
+	// bstFunctions()
+	graphFunctions()
+}
+
+func graphFunctions() {
+	g := graph.New()
+	fmt.Println(g)
+	g.AddNode()
+	g.AddNode()
+	g.AddNode()
+	g.ShowNodes()
+	fmt.Println(g.ShowEdges())
+	g.AddEdge(0, 1, 40)
+	g.AddEdge(1, 2, 20)
+	g.ShowNodes()
+	fmt.Println(g.ShowEdges())
 }
 
 func treeFunctions() {
