@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/dineshtbits/data-structures-in-go/queue"
+	"github.com/dineshtbits/data-structures-in-go/stack"
 )
 
 type GraphMatrix struct {
@@ -118,4 +119,30 @@ func (g *Graph) ShowEdges() [][]int {
 		}
 	}
 	return edges
+}
+
+func (g *Graph) TopologicalSort() {
+	s := &stack.Stack{}
+	visited := make(map[int]bool)
+
+	for i := 0; i < len(g.nodes); i++ {
+		if !visited[i] {
+			g.Tsort(i, s, visited)
+		}
+	}
+	for s.Size() > 0 {
+		fmt.Printf("%v ", s.Pop().(int))
+	}
+}
+
+func (g *Graph) Tsort(n int, s *stack.Stack, visited map[int]bool) {
+
+	visited[n] = true
+
+	for i := 0; i < len(g.nodes[n].edges); i++ {
+		if !visited[i] {
+			g.Tsort(i, s, visited)
+		}
+	}
+	s.Push(n)
 }
