@@ -13,13 +13,13 @@ import (
 )
 
 func main() {
-	// linkedlistFunctions()
+	linkedlistFunctions()
 	// queueFunctions()
 	// stackFunctions()
 	// heapFunctions()
 	// treeFunctions()
 	// bstFunctions()
-	graphFunctions()
+	// graphFunctions()
 }
 
 func graphFunctions() {
@@ -142,13 +142,23 @@ func heapFunctions() {
 }
 
 func linkedlistFunctions() {
-	l := linkedlist.List{}
-	l.InsertAtBegining("dinesh")
-	l.InsertAtBegining("Tummlapalli")
-	l.InsertAtBegining("John")
-	l.InsertAtBegining("Doe")
+	l := linkedlist.SinglyList{}
+	l.Insert(36)
+	l.Insert(35)
+	l.Insert(34)
 	l.Show()
-	l.DeleteByValue("David")
+	l.InsertAt(1, 37)
+	l.InsertAt(1, 38)
+	l.InsertAt(1, 39)
+	l.Show()
+	l.Append(40)
+	l.Append(41)
+	l.Show()
+	l.Delete()
+	l.Show()
+	l.Pop()
+	l.Show()
+	l.DeleteAt(1)
 	l.Show()
 }
 

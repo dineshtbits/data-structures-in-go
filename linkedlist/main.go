@@ -1,59 +1,95 @@
 package linkedlist
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type Node struct {
-	value string
-	next  *Node
+	data int
+	prev *Node
+	next *Node
 }
 
-type List struct {
+type SinglyList struct {
 	head *Node
 }
 
-func (L *List) InsertAtBegining(s string) {
-	n := &Node{value: s}
-
-	if L.head != nil {
-		n.next = L.head
+func (l *SinglyList) Show() {
+	fmt.Println()
+	current := l.head
+	for current != nil {
+		fmt.Printf("%v --> ", current.data)
+		current = current.next
 	}
-	L.head = n
 }
 
-func (L *List) DeleteByValue(s string) {
-	if L.head == nil {
-		fmt.Println("List is empty - nothing to delete")
-		return
+func (l *SinglyList) Insert(data int) {
+	// Insest at the beginnig of the list
+	n := &Node{data: data}
+	if l.head != nil {
+		n.next = l.head
 	}
-
-	if L.head.value == s {
-		L.head = L.head.next
-		return
-	}
-
-	previousNode := L.head
-
-	for previousNode.next != nil && previousNode.next.value != s {
-		previousNode = previousNode.next
-	}
-
-	if previousNode.next == nil {
-		fmt.Println("Not found")
-		return
-	}
-	previousNode.next = previousNode.next.next
+	l.head = n
 }
 
-func (L *List) Show() {
-	currentNode := L.head
-	if currentNode == nil {
-		fmt.Println("List is empty")
+func (l *SinglyList) InsertAt(position, data int) {
+	// Insest at a position in the list
+	previous := l.head
+	previousPos := 0
+	for previous != nil && previousPos != position {
+		previousPos++
+		previous = previous.next
+	}
+
+	if previous == nil {
+		fmt.Println("Not able to insert, unknown position")
+		return
+	}
+
+	n := &Node{data: data}
+	n.next = previous.next
+	previous.next = n
+}
+
+func (l *SinglyList) Append(data int) {
+	// Insest at end of the list
+	current := l.head
+	for current.next != nil {
+		current = current.next
+	}
+	current.next = &Node{data: data}
+}
+
+func (l *SinglyList) Delete() {
+	// Delete head node of the list
+	if l.head != nil {
+		l.head = l.head.next
 	} else {
-		for currentNode != nil {
-			fmt.Printf("value: %v, next: %v \n", currentNode.value, currentNode.next)
-			currentNode = currentNode.next
-		}
+		fmt.Println("List is empty, nothing to delete")
 	}
+}
+
+func (l *SinglyList) Pop() {
+	// Deletes last node
+	current := l.head
+	for current.next.next != nil {
+		current = current.next
+	}
+	current.next = nil
+}
+
+func (l *SinglyList) DeleteAt(position int) {
+	// Delete node at position of the list
+	current := l.head
+	currentPos := 0
+	for current != nil && currentPos != position-1 {
+		currentPos++
+		current = current.next
+	}
+
+	if current == nil {
+		fmt.Println("Position not founc")
+		return
+	}
+
+	current.next = current.next.next
+
 }
