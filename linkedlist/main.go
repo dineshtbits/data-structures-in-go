@@ -14,6 +14,10 @@ type SinglyList struct {
 	head *Node
 }
 
+type DoublyList struct {
+	head *Node
+}
+
 func (l *SinglyList) Show() {
 	fmt.Println()
 	current := l.head
@@ -95,8 +99,31 @@ func (l *SinglyList) DeleteAt(position int) {
 	current.next = current.next.next
 }
 
-type DoublyList struct {
-	head *Node
+func (l *SinglyList) FindNthNodeFromEnd(n int) int {
+	// If length of the list is known we can find the element at len(list)-n+1
+	// An alternative is to use two pointers.
+	if l.head == nil {
+		fmt.Println("List is empty - aborting")
+		return 0
+	}
+	var slowPtr *Node
+	current := l.head
+	c := 1
+	for current != nil && c <= n {
+		current = current.next
+		c++
+	}
+	if current == nil {
+		fmt.Println("Position not found - aborting")
+		return 0
+	}
+
+	slowPtr = l.head
+	for current != nil {
+		current = current.next
+		slowPtr = slowPtr.next
+	}
+	return slowPtr.data
 }
 
 func (l *DoublyList) Insert(data, position int) {

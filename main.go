@@ -160,6 +160,8 @@ func linkedlistFunctions() {
 	sl.Show()
 	sl.DeleteAt(1)
 	sl.Show()
+	n := 1
+	fmt.Printf("\n%v Element from end is %v", n, sl.FindNthNodeFromEnd(n))
 	dl := linkedlist.DoublyList{}
 	dl.Insert(4, 0)
 	dl.Insert(3, 0)
