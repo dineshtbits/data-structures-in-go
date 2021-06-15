@@ -169,6 +169,21 @@ func linkedlistFunctions() {
 	sl.Append(34)
 	sl.Show()
 	fmt.Printf("\nMiddle is %v\n", sl.FindMiddle())
+
+	// Merging two sorted lists test
+	list1 := &linkedlist.SinglyList{}
+	list1.Insert(3)
+	list1.Insert(2)
+	list1.Insert(1)
+	list2 := &linkedlist.SinglyList{}
+	list2.Insert(6)
+	list2.Insert(5)
+	list2.Insert(4)
+	list1.Show()
+	list2.Show()
+	linkedlist.MergeSortedLists(list1, list2).Show()
+
+	fmt.Println()
 	fmt.Println("Doubly linked lists below")
 	dl := linkedlist.DoublyList{}
 	dl.Insert(4, 0)

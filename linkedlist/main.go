@@ -166,6 +166,40 @@ func (l *SinglyList) FindMiddle() int {
 	return mid.data
 }
 
+func MergeSortedLists(list1, list2 *SinglyList) *SinglyList {
+	var result *Node
+	var head *Node
+
+	l1 := list1.head
+	l2 := list2.head
+
+	for l1 != nil && l2 != nil {
+		n := &Node{}
+		if l1.data <= l2.data {
+			n.data = l1.data
+			l1 = l1.next
+		} else {
+			n.data = l2.data
+			l2 = l2.next
+		}
+		if result == nil {
+			result = n
+			head = n
+		} else {
+			result.next = n
+			result = result.next
+		}
+	}
+
+	if l1 == nil {
+		result.next = l2
+	} else {
+		result.next = l2
+	}
+
+	return &SinglyList{head: head}
+}
+
 func (l *SinglyList) CreateLoop() {
 	current := l.head
 	for current.next != nil {
