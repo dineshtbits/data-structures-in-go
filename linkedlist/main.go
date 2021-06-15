@@ -126,6 +126,26 @@ func (l *SinglyList) FindNthNodeFromEnd(n int) int {
 	return slowPtr.data
 }
 
+func (l *SinglyList) CheckIfLoopsExists() bool {
+	slowPtr, fastPtr := l.head, l.head
+	for fastPtr != nil && fastPtr.next != nil && slowPtr != nil {
+		fastPtr = fastPtr.next.next
+		slowPtr = slowPtr.next
+		if slowPtr == fastPtr {
+			return true
+		}
+	}
+	return false
+}
+
+func (l *SinglyList) CreateLoop() {
+	current := l.head
+	for current.next != nil {
+		current = current.next
+	}
+	current.next = l.head
+}
+
 func (l *DoublyList) Insert(data, position int) {
 	n := &Node{data: data}
 	if position == 0 { // insert at the beginnig of the list
