@@ -162,12 +162,14 @@ func linkedlistFunctions() {
 	sl.Show()
 	n := 1
 	fmt.Printf("\n%v Element from end is %v", n, sl.FindNthNodeFromEnd(n))
-	fmt.Printf("\n Loop exists %v", sl.CheckIfLoopsExists())
+	fmt.Printf("\nLoop exists %v", sl.CheckIfLoopsExists())
 	// sl.CreateLoop()
 	// fmt.Printf("\n Loop exists %v", sl.CheckIfLoopsExists())
 	sl.Reverse()
+	sl.Append(34)
 	sl.Show()
-
+	fmt.Printf("\nMiddle is %v\n", sl.FindMiddle())
+	fmt.Println("Doubly linked lists below")
 	dl := linkedlist.DoublyList{}
 	dl.Insert(4, 0)
 	dl.Insert(3, 0)

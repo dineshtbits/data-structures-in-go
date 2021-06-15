@@ -152,6 +152,20 @@ func (l *SinglyList) Reverse() {
 	l.head = previous
 }
 
+func (l *SinglyList) FindMiddle() int {
+	current, mid := l.head, l.head
+
+	for current.next != nil {
+		mid = mid.next
+		if current.next.next != nil {
+			current = current.next.next
+		} else {
+			current = current.next
+		}
+	}
+	return mid.data
+}
+
 func (l *SinglyList) CreateLoop() {
 	current := l.head
 	for current.next != nil {
