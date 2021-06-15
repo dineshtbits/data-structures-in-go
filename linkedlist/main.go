@@ -138,6 +138,20 @@ func (l *SinglyList) CheckIfLoopsExists() bool {
 	return false
 }
 
+func (l *SinglyList) Reverse() {
+	current := l.head
+	var previous *Node
+	var next *Node
+	for current != nil {
+		next = current.next
+		current.next = previous
+
+		previous = current
+		current = next
+	}
+	l.head = previous
+}
+
 func (l *SinglyList) CreateLoop() {
 	current := l.head
 	for current.next != nil {
