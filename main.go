@@ -142,24 +142,35 @@ func heapFunctions() {
 }
 
 func linkedlistFunctions() {
-	l := linkedlist.SinglyList{}
-	l.Insert(36)
-	l.Insert(35)
-	l.Insert(34)
-	l.Show()
-	l.InsertAt(1, 37)
-	l.InsertAt(1, 38)
-	l.InsertAt(1, 39)
-	l.Show()
-	l.Append(40)
-	l.Append(41)
-	l.Show()
-	l.Delete()
-	l.Show()
-	l.Pop()
-	l.Show()
-	l.DeleteAt(1)
-	l.Show()
+	sl := linkedlist.SinglyList{}
+	sl.Insert(36)
+	sl.Insert(35)
+	sl.Insert(34)
+	sl.Show()
+	sl.InsertAt(1, 37)
+	sl.InsertAt(1, 38)
+	sl.InsertAt(1, 39)
+	sl.Show()
+	sl.Append(40)
+	sl.Append(41)
+	sl.Show()
+	sl.Delete()
+	sl.Show()
+	sl.Pop()
+	sl.Show()
+	sl.DeleteAt(1)
+	sl.Show()
+	dl := linkedlist.DoublyList{}
+	dl.Insert(4, 0)
+	dl.Insert(3, 0)
+	dl.Insert(2, 0)
+	dl.Insert(1, 0)
+	dl.Insert(5, 3)
+	dl.Show()
+	dl.Delete(3)
+	dl.Show()
+	dl.Delete(3)
+	dl.Show()
 }
 
 func queueFunctions() {

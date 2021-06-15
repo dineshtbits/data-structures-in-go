@@ -1,6 +1,8 @@
 package linkedlist
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Node struct {
 	data int
@@ -91,5 +93,88 @@ func (l *SinglyList) DeleteAt(position int) {
 	}
 
 	current.next = current.next.next
+}
 
+type DoublyList struct {
+	head *Node
+}
+
+func (l *DoublyList) Insert(data, position int) {
+	n := &Node{data: data}
+	if position == 0 { // insert at the beginnig of the list
+		if l.head != nil {
+			l.head.prev = n
+			n.next = l.head
+		}
+		l.head = n
+	} else { // insert at position
+		current := l.head
+		currentPos := 0
+		for current != nil && currentPos != position { //reach the position
+			currentPos++
+			current = current.next
+		}
+
+		if current == nil {
+			fmt.Println("Unable to find position - aborting insert")
+			return
+		}
+
+		n.next = current.next
+		n.prev = current
+		if current.next != nil {
+			current.next.prev = n
+		}
+		current.next = n
+	}
+}
+
+func (l *DoublyList) Delete(position int) {
+	if position == 0 { // delete at the beginnig of the list
+		if l.head == nil {
+			fmt.Println("list is empty - aborting delete")
+			return
+		}
+		l.head.next.prev = nil
+		l.head = l.head.next
+
+	} else { // delete at position
+		current := l.head
+		currentPos := 0
+		for current != nil && currentPos != position-1 { //reach the position
+			currentPos++
+			current = current.next
+		}
+
+		if current == nil {
+			fmt.Println("Unable to find position - aborting insert")
+			return
+		}
+
+		if current.next.next != nil {
+			temp := current.next.next
+			temp.prev = current
+			current.next = temp
+		} else { // deleting last elemenet
+			current.next = nil
+		}
+
+	}
+}
+
+func (l *DoublyList) Show() {
+	fmt.Println()
+	current := l.head
+	for current != nil {
+		fmt.Printf("|*%v|%v|*%v| --> ", nullOrValue(current.prev), nullOrValue(current), nullOrValue(current.next))
+		current = current.next
+	}
+}
+
+func nullOrValue(n *Node) int {
+	if n != nil {
+		return n.data
+	} else {
+		return 0
+	}
 }
