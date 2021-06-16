@@ -200,6 +200,51 @@ func MergeSortedLists(list1, list2 *SinglyList) *SinglyList {
 	return &SinglyList{head: head}
 }
 
+func haveEnoughElemensForBlock(n *Node, blocks int) bool {
+	i := 1
+	temp := n
+	for temp != nil && i < blocks {
+		temp = temp.next
+		i++
+	}
+	return i == blocks
+}
+
+func getNewHead(current *Node, blocks int) *Node {
+	i := 1
+	temp := current
+	for i < blocks && temp != nil {
+		current = current.next
+		i++
+	}
+	return current
+}
+
+func (l *SinglyList) ReverseInBlocks(blocks int) {
+	current := l.head
+	var prev, next, newHead *Node
+
+	if current != nil && haveEnoughElemensForBlock(current, blocks) {
+		newHead = getNewHead(current, blocks)
+	} else {
+		newHead = l.head
+	}
+
+	for current != nil && haveEnoughElemensForBlock(current, blocks) { // terminating condition for end of the list or not enough elements from here
+		i := 1
+		prev = getNewHead(current, blocks+1)
+		for i <= blocks {
+			next = current.next
+			current.next = prev
+
+			prev = current.next
+			current = next
+			i++
+		}
+	}
+	l.head = newHead
+}
+
 func (l *SinglyList) CreateLoop() {
 	current := l.head
 	for current.next != nil {

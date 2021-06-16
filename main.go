@@ -183,6 +183,23 @@ func linkedlistFunctions() {
 	list2.Show()
 	linkedlist.MergeSortedLists(list1, list2).Show()
 
+	fmt.Println("\nStart: Testing Reverse in Blocks")
+	list3 := &linkedlist.SinglyList{}
+	list3.Insert(10)
+	list3.Insert(9)
+	list3.Insert(8)
+	list3.Insert(7)
+	list3.Insert(6)
+	list3.Insert(5)
+	list3.Insert(4)
+	list3.Insert(3)
+	list3.Insert(2)
+	list3.Insert(1)
+	list3.Show()
+	list3.ReverseInBlocks(3)
+	list3.Show()
+	fmt.Println("\nEnd: Testing Reverse in Blocks")
+
 	fmt.Println()
 	fmt.Println("Doubly linked lists below")
 	dl := linkedlist.DoublyList{}
