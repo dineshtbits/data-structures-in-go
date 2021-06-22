@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/dineshtbits/data-structures-in-go/advancedqueue"
 	"github.com/dineshtbits/data-structures-in-go/bst"
 	"github.com/dineshtbits/data-structures-in-go/graph"
 	"github.com/dineshtbits/data-structures-in-go/heap"
@@ -13,13 +14,14 @@ import (
 )
 
 func main() {
-	linkedlistFunctions()
+	// linkedlistFunctions()
 	// queueFunctions()
 	// stackFunctions()
 	// heapFunctions()
 	// treeFunctions()
 	// bstFunctions()
 	// graphFunctions()
+	advancedQueueFunctions()
 }
 
 func graphFunctions() {
@@ -229,4 +231,29 @@ func queueFunctions() {
 	fmt.Printf("Dequeuing : %v --> %v\n", q.Dequeue(), q)
 	fmt.Printf("Dequeuing : %v --> %v\n", q.Dequeue(), q)
 	fmt.Printf("Dequeuing : %v --> %v\n", q.Dequeue(), q)
+}
+
+func advancedQueueFunctions() {
+	q := &advancedqueue.Queue{}
+	q.Enqueue(7)
+	q.Enqueue(2)
+	q.Enqueue(6)
+	q.Enqueue(1)
+	q.Enqueue(0)
+	q.Enqueue(87)
+	q.Show()
+
+	element, err := q.Dequeue()
+	if err != nil {
+		fmt.Println(element)
+	}
+	q.Show()
+
+	element, err = q.Dequeue()
+	if err != nil {
+		fmt.Println(element)
+	}
+	q.Show()
+	q.ReverstFirstNElements(2)
+	q.Show()
 }

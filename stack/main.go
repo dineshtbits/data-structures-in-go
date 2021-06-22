@@ -8,6 +8,10 @@ func (s *Stack) Push(element interface{}) {
 	s.items = append(s.items, element)
 }
 
+func (s *Stack) Top() interface{} {
+	return s.items[len(s.items)-1]
+}
+
 func (s *Stack) Pop() interface{} {
 	length := len(s.items) - 1
 	removed := s.items[length]
