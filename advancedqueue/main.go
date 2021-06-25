@@ -8,7 +8,7 @@ import (
 )
 
 type Node struct {
-	data int
+	data interface{}
 	next *Node
 }
 
@@ -16,6 +16,10 @@ type Queue struct {
 	front *Node
 	rear  *Node
 	size  int
+}
+
+func (q *Queue) Size() int {
+	return q.size
 }
 
 func (q *Queue) Show() {
@@ -28,7 +32,7 @@ func (q *Queue) Show() {
 	fmt.Println()
 }
 
-func (q *Queue) Enqueue(data int) {
+func (q *Queue) Enqueue(data interface{}) {
 	n := &Node{data: data}
 	if q.rear != nil {
 		q.rear.next = n
@@ -40,7 +44,7 @@ func (q *Queue) Enqueue(data int) {
 	q.size++
 }
 
-func (q *Queue) Dequeue() (int, error) {
+func (q *Queue) Dequeue() (interface{}, error) {
 	if q.size <= 0 {
 		return 0, errors.New("Queue is empty")
 	}

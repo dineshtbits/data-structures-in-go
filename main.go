@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/dineshtbits/data-structures-in-go/advancedqueue"
+	"github.com/dineshtbits/data-structures-in-go/advancedtree"
 	"github.com/dineshtbits/data-structures-in-go/bst"
 	"github.com/dineshtbits/data-structures-in-go/graph"
 	"github.com/dineshtbits/data-structures-in-go/heap"
@@ -21,7 +22,39 @@ func main() {
 	// treeFunctions()
 	// bstFunctions()
 	// graphFunctions()
-	advancedQueueFunctions()
+	// advancedQueueFunctions()
+	advancedTreeFunctions()
+
+}
+
+func advancedTreeFunctions() {
+	node := &advancedtree.BinaryTreeNode{}
+	for i := 1; i <= 7; i++ {
+		node.Insert(i)
+	}
+	node.ShowLevelOrder()
+	node.ShowInOrder()
+	node.ShowPreOrder()
+	node.ShowPostOrder()
+	fmt.Printf("\nMax is %v\n", node.Max())
+	fmt.Printf("MaxUsingLevelOrder is %v\n", node.MaxUsingLevelOrder())
+	fmt.Printf("Size is %v\n", node.Size())
+	fmt.Printf("Height is %v\n", node.Height())
+	fmt.Printf("HeightUsingLevelOrder is %v\n", node.HeightUsingLevelOrder())
+	node.PrintPaths([]int{})
+	// node.ShowLevelOrder()
+	// node.Mirror()
+	// node.ShowLevelOrder()
+	m := make(map[int]int)
+	node.VerticalSum(0, m)
+	fmt.Printf("\nVertical sum is %v\n", m)
+	fmt.Printf("\nLCA %v\n", node.LCA(4, 7))
+	n := advancedtree.BuildFromPreOrder("ILILL")
+	n.ShowPreOrder()
+	fmt.Println()
+	node.PrintAncestorsOf(4)
+
+	node.ZigzagTraversal()
 }
 
 func graphFunctions() {
